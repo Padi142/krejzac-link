@@ -8,4 +8,4 @@ const poolConnection = mysql.createPool(process.env.MYSQL_URL as string);
 
 export const drizzle_db = drizzle(poolConnection);
 
-	// await migrate(drizzle_db, { migrationsFolder: 'drizzle' });
+	await migrate(drizzle_db, { migrationsFolder: 'drizzle' });

@@ -8,7 +8,8 @@ export const links = mysqlTable('links', {
 	clicks: int('clicks').notNull().default(0),
 	addedOn: datetime('added_on')
 		.notNull()
-		.default(sql`now()`)
+		.default(sql`now()`),
+	lastClicked: datetime('last_clicked')
 });
 
 export type Link = InferModel<typeof links>;
