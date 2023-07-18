@@ -3,6 +3,7 @@ import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { drizzle_db } from '$lib/db/connection.server';
 import { links } from '$lib/db/schema/link';
+import { env } from '$env/dynamic/private';
 
 export const load = (async ({ url }) => {
 	return {
@@ -11,10 +12,15 @@ export const load = (async ({ url }) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-	create_link: async ({ params, request }) => {
+	create_link: async ({ request }) => {
 		const data = await request.formData();
 		const longLink = data.get('longLink')?.toString().trim();
 		const shortLink = data.get('shortLink')?.toString().trim();
+		const password = data.get('password')?.toString().trim();
+
+		if(password != env.ADMINPASSWORD){
+			throw redirect(303, "https://media.discordapp.net/attachments/819665719615815734/1038510113511706687/caption-1.gif");
+		}
 
 		await drizzle_db.insert(links).values({
 			link: longLink,
