@@ -1,15 +1,15 @@
-import { int, mysqlTable, text, datetime, serial } from 'drizzle-orm/mysql-core';
+import { timestamp, text, integer, pgTable, serial } from 'drizzle-orm/pg-core';
 import { sql, type InferModel } from 'drizzle-orm';
 
-export const links = mysqlTable('links', {
+export const links = pgTable('links', {
 	id: serial('id').primaryKey(),
 	link: text('link').notNull().default(''),
 	shortLink: text('short_link').notNull().default(''),
-	clicks: int('clicks').notNull().default(0),
-	addedOn: datetime('added_on')
+	clicks: integer('clicks').notNull().default(0),
+	addedOn: timestamp('added_on')
 		.notNull()
 		.default(sql`now()`),
-	lastClicked: datetime('last_clicked')
+	lastClicked: timestamp('last_clicked')
 });
 
 export type Link = InferModel<typeof links>;
