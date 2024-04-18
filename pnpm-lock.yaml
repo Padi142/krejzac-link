@@ -10,13 +10,16 @@ dependencies:
     version: 3.2.1
   drizzle-orm:
     specifier: ^0.27.2
-    version: 0.27.2(mysql2@3.5.2)
+    version: 0.27.2(mysql2@3.5.2)(postgres@3.4.4)
   mysql:
     specifier: ^2.18.1
     version: 2.18.1
   mysql2:
     specifier: ^3.5.2
     version: 3.5.2
+  postgres:
+    specifier: ^3.4.4
+    version: 3.4.4
 
 devDependencies:
   '@sveltejs/adapter-auto':
@@ -1228,7 +1231,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.27.2(mysql2@3.5.2):
+  /drizzle-orm@0.27.2(mysql2@3.5.2)(postgres@3.4.4):
     resolution: {integrity: sha512-ZvBvceff+JlgP7FxHKe0zOU9CkZ4RcOtibumIrqfYzDGuOeF0YUY0F9iMqYpRM7pxnLRfC+oO7rWOUH3T5oFQA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -1291,6 +1294,7 @@ packages:
         optional: true
     dependencies:
       mysql2: 3.5.2
+      postgres: 3.4.4
     dev: false
 
   /electron-to-chromium@1.4.463:
@@ -2308,6 +2312,11 @@ packages:
       nanoid: 3.3.6
       picocolors: 1.0.0
       source-map-js: 1.0.2
+
+  /postgres@3.4.4:
+    resolution: {integrity: sha512-IbyN+9KslkqcXa8AO9fxpk97PA4pzewvpi2B3Dwy9u4zpV32QicaEdgmF3eSQUzdRk7ttDHQejNgAEr4XoeH4A==}
+    engines: {node: '>=12'}
+    dev: false
 
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
